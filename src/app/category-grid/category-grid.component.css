@@ -1,0 +1,25 @@
+.category-item {
+  margin-bottom: 1.5rem;
+}
+
+  .category-item a {
+    text-decoration: none;
+    display: block;
+  }
+
+.cat-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+  .cat-img:hover {
+    transform: scale(1.05);
+  }
+
+.category-item p {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}

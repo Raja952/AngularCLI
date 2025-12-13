@@ -1,0 +1,12 @@
+<div class="row g-4 text-center">
+  <!-- Category Item Loop -->
+  <div *ngFor="let category of categories"
+       class="col-6 col-md-2 category-item">
+    <a [routerLink]="category.route">
+      <img [src]="category.imageUrl"
+           [alt]="category.name"
+           class="cat-img" />
+    </a>
+    <p>{{ category.name }}</p>
+  </div>
+</div>

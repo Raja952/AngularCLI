@@ -1,0 +1,60 @@
+<div class="gallery-container">
+  <!-- Header Section -->
+  <div class="gallery-header">
+    <h1 class="gallery-title">Woodex Store Gallery</h1>
+    <p class="gallery-subtitle">Discover our premium collection of furniture and decorations</p>
+  </div>
+
+  <!-- Category Filters -->
+  <div class="category-filters">
+    <button *ngFor="let category of categories"
+            [class.active]="selectedCategory === category"
+            (click)="filterByCategory(category)"
+            class="category-btn">
+      {{category}}
+    </button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="gallery-grid">
+    <div class="gallery-item" *ngFor="let item of filteredItems">
+      <div class="image-container">
+        <img [src]="item.imageUrl"
+             [alt]="item.title"
+             class="gallery-image">
+        <div class="image-overlay">
+          <button class="view-btn">
+            <i class="fas fa-eye"></i> View Details
+          </button>
+        </div>
+      </div>
+
+      <div class="item-content">
+        <div class="item-header">
+          <h3 class="item-title">{{item.title}}</h3>
+          <span class="item-category">{{item.category}}</span>
+        </div>
+
+        <p class="item-description">{{item.description}}</p>
+
+        <div class="item-footer">
+          <button class="action-btn">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+          <button class="action-btn outline">
+            <i class="far fa-heart"></i> Wishlist
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="gallery-footer">
+    <h2 class="store-title">VGFurniture Store</h2>
+    <p class="store-tagline">Premium Furniture & Home Decorations</p>
+    <button class="store-btn">
+      Visit Store <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
