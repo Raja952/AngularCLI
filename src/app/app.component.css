@@ -7,7 +7,7 @@
 
 /* Discount Banner - Full Width */
 .discount-banner {
-  background-color: #e44d26;
+  background-color: #a67c52;
   color: white;
   text-align: center;
   padding: 0.5rem;
@@ -39,14 +39,14 @@
     text-decoration: none;
     font-size: 1.8rem;
     font-weight: bold;
-    color: #333;
+    color: #a67c52;
     display: flex;
     align-items: center;
     gap: 2px;
   }
 
   .logo span {
-    color: #e44d26;
+    color: #a67c52;
     font-weight: 600;
   }
 
@@ -97,7 +97,7 @@
   }
 
     .main-menu a:hover {
-      color: #e44d26;
+      color: #a67c52;
     }
 
     .main-menu a::after {
@@ -107,7 +107,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background-color: #e44d26;
+      background-color: #a67c52;
       transition: width 0.3s;
     }
 
@@ -120,22 +120,42 @@
   position: relative;
   margin-left: 1rem;
 }
+/*.join-us-link {
+  padding: 0.75rem 1rem;
+}
 
 .join-us-link {
-  text-decoration: none;
+  text-align: center;
+  width: 100%;
+}*/
+
+
+.join-us-link {
+  /*  text-decoration: none;
   color: white;
-  background-color: #e44d26;
+  ;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
   font-weight: 500;
   transition: background-color 0.3s;
   display: block;
   white-space: nowrap;
+  cursor: pointer;*/
+
+  padding: 12px 28px;
+  border: 2px solid #e0e0e0;
+  background-color: #a67c52;
+  background: white;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
   .join-us-link:hover {
-    background-color: #333;
+    background-color: #a67c52;
   }
 
 /* Dropdown Content */
@@ -169,7 +189,7 @@
 
     .dropdown-content a:hover {
       background-color: #f8f9fa;
-      color: #e44d26;
+      color: #a67c52;
     }
 
 /* Desktop hover effect */
@@ -255,16 +275,13 @@ main {
         display: none;
       }
 
-  .join-us-container {
+  /*.join-us-container {
     width: 100%;
     margin-left: 0;
     margin-top: 1rem;
   }
+*/
 
-  .join-us-link {
-    text-align: center;
-    width: 100%;
-  }
 
   .dropdown-content {
     position: static;
@@ -288,9 +305,6 @@ main {
     font-size: 1.5rem;
   }
 
-  .join-us-link {
-    padding: 0.75rem 1rem;
-  }
 
   .discount-banner {
     font-size: 0.75rem;
@@ -310,3 +324,97 @@ main {
 .mobile-toggle.active span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
 }
+
+/* Top Offer */
+.top-offer {
+  background: #b38a5f;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.logo a {
+  font-size: 26px;
+  font-weight: 700;
+  color: #b38a5f;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #333;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+  .nav-links a {
+    text-decoration: none;
+    color: #1f2d3d;
+    font-weight: 500;
+  }
+
+    .nav-links a:hover {
+      color: #b38a5f;
+    }
+
+/* Join Us Button */
+.join-btn {
+  background: #f04e23;
+  color: #fff !important;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+  .join-btn:hover {
+    background: #d8431c;
+  }
+
+/* Category Bar */
+.category-bar {
+  display: flex;
+  gap: 20px;
+  padding: 20px 40px;
+  background: #fff;
+}
+
+/* Pills */
+.pill {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 2px solid #ddd;
+  background: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+  .pill:hover {
+    border-color: #b38a5f;
+    color: #b38a5f;
+  }
+
+  /* Active Pill */
+  .pill.active {
+    background: #b38a5f;
+    color: #fff;
+    border-color: #b38a5f;
+    box-shadow: 0 8px 18px rgba(179,138,95,0.35);
+  }

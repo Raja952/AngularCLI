@@ -23,6 +23,11 @@ import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ImageGalleryComponent } from './home/image-gallery/image-gallery.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutUSComponent } from './about-us/about-us.component';
+import { ContactUSComponent } from './contact-us/contact-us.component';
+import { ContractorComponent } from './JoinUS/contractor/contractor.component';
+import { EngineerComponent } from './JoinUS/engineer/engineer.component';
+import { CarpenterComponent } from './JoinUS/carpenter/carpenter.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,11 @@ import { FooterComponent } from './footer/footer.component';
     CarouselComponent,
     ImageGalleryComponent,
     FooterComponent,
+    AboutUSComponent,
+    ContactUSComponent,
+    ContractorComponent,
+    EngineerComponent,
+    CarpenterComponent,
   ],
   imports: [
     BrowserModule,

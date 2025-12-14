@@ -1,1 +1,117 @@
-<p>sectional-sofas works!</p>
+<!-- sectional-sofas.component.html -->
+<div class="container">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="text-center p-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading sectional sofas...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Sectional Sofas Grid -->
+  <div *ngIf="!loading && !error" class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let sofa of sectionalSofas">
+      <div class="product-card shadow-sm border rounded h-100 d-flex flex-column">
+        <!-- Sofa Image with click event -->
+        <div class="image-container" style="cursor: pointer;" (click)="checkOutPage(sofa)">
+          <img [alt]="sofa.title || 'Sectional Sofa Image'"
+               [src]="sofa.src || 'assets/default-sofa.jpg'"
+               class="img-fluid rounded-top w-100"
+               style="height: 250px; object-fit: cover;"
+               [id]="'sofa-' + sofa.id" />
+
+          <!-- Discount Badge -->
+          <div *ngIf="sofa.discount"
+               class="discount-badge bg-danger text-white p-1 px-2 position-absolute"
+               style="top: 10px; right: 10px; border-radius: 3px;">
+            {{ sofa.discount }}
+          </div>
+        </div>
+
+        <!-- Sofa Info -->
+        <div class="product-info p-3 flex-grow-1 d-flex flex-column">
+          <!-- Title -->
+          <h6 class="text-truncate mb-2" [title]="sofa.title || 'Unknown Sectional Sofa'">
+            {{ sofa.title || 'Unknown Sectional Sofa' }}
+          </h6>
+
+          <!-- Description -->
+          <p *ngIf="sofa.description" class="text-muted small mb-2 flex-grow-1">
+            {{ (sofa.description.length > 60) ? (sofa.description | slice:0:60) + '...' : sofa.description }}
+          </p>
+
+          <!-- Price and Discount -->
+          <div class="price-section mt-auto">
+            <div class="d-flex align-items-center mb-1">
+              <span class="current-price h5 text-success fw-bold me-2">
+                ₹{{ sofa.Amount | number }}
+              </span>
+            </div>
+
+            <!-- Rating -->
+            <div *ngIf="sofa.rating" class="mb-2">
+              <div class="d-flex align-items-center">
+                <span class="text-warning">
+                  <i class="fas fa-star" *ngFor="let i of [1,2,3,4,5]"
+                     [class.fas]="i <= sofa.rating"
+                     [class.far]="i > sofa.rating"></i>
+                </span>
+                <span class="ms-1 small text-muted">{{ sofa.rating }}</span>
+              </div>
+            </div>
+
+            <!-- Brand -->
+            <div *ngIf="sofa.brand" class="text-muted small mb-2">
+              {{ sofa.brand }}
+            </div>
+
+            <!-- EMI Info -->
+            <div *ngIf="sofa.emi" class="text-primary small mb-2">
+              <i class="fas fa-credit-card"></i> {{ sofa.emi }}
+            </div>
+
+            <!-- Shipping Info -->
+            <div *ngIf="sofa.shipping" class="shipping-info small text-info mb-2">
+              <i class="fas fa-shipping-fast"></i> {{ sofa.shipping }}
+            </div>
+
+            <!-- Stock Information -->
+            <div *ngIf="sofa.quantity !== undefined" class="stock-info small mb-3">
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Available:</span>
+                <span [class.text-success]="sofa.quantity > 0"
+                      [class.text-danger]="sofa.quantity === 0">
+                  {{ sofa.quantity }} {{ sofa.quantity === 1 ? 'piece' : 'pieces' }}
+                </span>
+              </div>
+              <div *ngIf="sofa.maxQuantity" class="d-flex justify-content-between">
+                <span class="text-muted">Max per order:</span>
+                <span>{{ sofa.maxQuantity }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <button class="btn btn-primary w-100 mt-auto"
+                  (click)="checkOutPage(sofa)"
+                  [disabled]="sofa.quantity === 0">
+            {{ sofa.quantity === 0 ? 'Out of Stock' : 'Buy Now' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && !error && sectionalSofas.length === 0" class="text-center p-5">
+    <div class="alert alert-info">
+      <h4>No sectional sofas available at the moment</h4>
+      <p>Please check back later.</p>
+    </div>
+  </div>
+</div>

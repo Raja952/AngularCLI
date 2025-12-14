@@ -1,1 +1,112 @@
-<p>recliners works!</p>
+<!-- recliners.component.html -->
+<div class="container">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="text-center p-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading recliners...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Recliners Grid -->
+  <div *ngIf="!loading && !error && recliners.length > 0" class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let recliner of recliners">
+      <div class="product-card shadow-sm border rounded h-100 d-flex flex-column">
+        <!-- Image with click event -->
+        <div class="image-container" style="cursor: pointer;" (click)="checkOutPage(recliner)">
+          <img [alt]="recliner.title || 'Recliner Image'"
+               [src]="recliner.src || 'assets/default-recliner.jpg'"
+               class="img-fluid rounded-top w-100"
+               style="height: 250px; object-fit: cover;" />
+
+          <!-- Discount Badge -->
+          <div *ngIf="recliner.discount"
+               class="discount-badge bg-danger text-white p-1 px-2 position-absolute"
+               style="top: 10px; right: 10px; border-radius: 3px;">
+            {{ recliner.discount }}
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="product-info p-3 flex-grow-1 d-flex flex-column">
+          <!-- Title -->
+          <h6 class="text-truncate mb-2" [title]="recliner.title || 'Unknown Recliner'">
+            {{ recliner.title || 'Unknown Recliner' }}
+          </h6>
+
+          <!-- Description -->
+          <p *ngIf="recliner.description" class="text-muted small mb-2 flex-grow-1">
+            {{ (recliner.description.length > 60) ? (recliner.description | slice:0:60) + '...' : recliner.description }}
+          </p>
+
+          <!-- Price -->
+          <div class="price-section mt-auto">
+            <div class="d-flex align-items-center mb-1">
+              <span class="current-price h5 text-success fw-bold me-2">
+                ₹{{ recliner.Amount | number }}
+              </span>
+            </div>
+
+            <!-- Rating -->
+            <div *ngIf="recliner.rating" class="mb-2">
+              <div class="d-flex align-items-center">
+                <span class="text-warning">
+                  <i class="fas fa-star" *ngFor="let i of [1,2,3,4,5]"
+                     [class.fas]="i <= recliner.rating"
+                     [class.far]="i > recliner.rating"></i>
+                </span>
+                <span class="ms-1 small text-muted">{{ recliner.rating }}</span>
+              </div>
+            </div>
+
+            <!-- Brand -->
+            <div *ngIf="recliner.brand" class="text-muted small mb-2">
+              {{ recliner.brand }}
+            </div>
+
+            <!-- EMI Info -->
+            <div *ngIf="recliner.emi" class="text-primary small mb-2">
+              <i class="fas fa-credit-card"></i> {{ recliner.emi }}
+            </div>
+
+            <!-- Shipping Info -->
+            <div *ngIf="recliner.shipping" class="shipping-info small text-info mb-2">
+              <i class="fas fa-shipping-fast"></i> {{ recliner.shipping }}
+            </div>
+
+            <!-- Stock Information -->
+            <div *ngIf="recliner.quantity !== undefined" class="stock-info small mb-3">
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Available:</span>
+                <span [class.text-success]="recliner.quantity > 0"
+                      [class.text-danger]="recliner.quantity === 0">
+                  {{ recliner.quantity }} {{ recliner.quantity === 1 ? 'piece' : 'pieces' }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <button class="btn btn-primary w-100 mt-auto"
+                  (click)="checkOutPage(recliner)"
+                  [disabled]="recliner.quantity === 0">
+            {{ recliner.quantity === 0 ? 'Out of Stock' : 'Buy Now' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && !error && recliners.length === 0" class="text-center p-5">
+    <div class="alert alert-info">
+      <h4>No recliners available at the moment</h4>
+      <p>Please check back later.</p>
+    </div>
+  </div>
+</div>

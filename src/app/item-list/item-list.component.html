@@ -1,0 +1,61 @@
+<!-- item-list.component.html -->
+<div class="item-list-container">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a routerLink="/">Home</a> &gt;
+    <span>{{categoryTitle}}</span>
+  </div>
+
+  <!-- Category Header -->
+  <div class="category-header">
+    <h1>{{categoryTitle}}</h1>
+    <p>Discover our premium collection of {{categoryTitle.toLowerCase()}}</p>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading items...</p>
+  </div>
+
+  <!-- Items Grid -->
+  <div *ngIf="!loading && items.length > 0" class="items-grid">
+    <div *ngFor="let item of items" class="item-card">
+      <div class="item-image">
+        <img [src]="item.imageUrl" [alt]="item.name">
+        <div class="item-badge" *ngIf="item.discount">
+          {{item.discount}}% OFF
+        </div>
+      </div>
+
+      <div class="item-details">
+        <h3 class="item-name">{{item.name}}</h3>
+        <p class="item-description">{{item.description}}</p>
+
+        <div class="item-price">
+          <span class="current-price">${{item.price}}</span>
+          <span *ngIf="item.oldPrice" class="old-price">${{item.oldPrice}}</span>
+        </div>
+
+        <div class="item-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-value">{{item.rating || 4.5}}</span>
+          <span class="reviews">({{item.reviews || 120}} reviews)</span>
+        </div>
+
+        <button class="add-to-cart-btn" (click)="addToCart(item)">
+          <i class="fas fa-shopping-cart"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Items Message -->
+  <div *ngIf="!loading && items.length === 0" class="no-items">
+    <h3>No items found in this category</h3>
+    <p>Check back soon for new arrivals!</p>
+    <button routerLink="/" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </button>
+  </div>
+</div>

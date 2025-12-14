@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Our Team</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #a67c52 0%, #8b6542 100%);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Introduction Section */
+    .intro-section {
+      padding: 60px 20px;
+      background: #f8f9fa;
+      text-align: center;
+    }
+
+      .intro-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .intro-section p {
+        font-size: 1.1rem;
+        color: #666;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+    /* Categories Section */
+    .categories-section {
+      padding: 60px 20px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+      .category-card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+      }
+
+      .category-card.highlighted {
+        border: 3px solid #a67c52;
+        box-shadow: 0 8px 20px rgba(166, 124, 82, 0.3);
+      }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .category-icon {
+      font-size: 3rem;
+    }
+
+    .category-header h2 {
+      font-size: 2.2rem;
+      color: #333;
+      margin: 0;
+    }
+
+    .category-description {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .category-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .requirements h3,
+    .benefits h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #a67c52;
+      padding-bottom: 10px;
+    }
+
+    .requirements ul,
+    .benefits ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .requirements li,
+    .benefits li {
+      padding: 10px 0;
+      padding-left: 30px;
+      position: relative;
+      color: #555;
+      line-height: 1.6;
+    }
+
+      .requirements li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #a67c52;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .benefits li:before {
+        content: "★";
+        position: absolute;
+        left: 0;
+        color: #ffa500;
+        font-size: 1.2rem;
+      }
+
+    .apply-btn {
+      background: linear-gradient(135deg, #a67c52 0%, #8b6542 100%);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto;
+    }
+
+      .apply-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(166, 124, 82, 0.4);
+      }
+
+    /* Process Section */
+    .process-section {
+      padding: 60px 20px;
+      background: #f8f9fa;
+    }
+
+      .process-section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #333;
+      }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #a67c52 0%, #8b6542 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0 auto 20px;
+    }
+
+    .step h3 {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .step p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: white;
+    }
+
+      .contact-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .contact-section p {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .contact-section a {
+        color: #a67c52;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+        .contact-section a:hover {
+          text-decoration: underline;
+        }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+
+      .category-details {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .category-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-section h2,
+      .process-section h2,
+      .contact-section h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="join-us-page">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Join Our Team as Carpenter</h1>
+        <p>Build your career with us and be part of exceptional projects</p>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="intro-section">
+      <div class="container">
+        <h2>Why Work With Us?</h2>
+        <p>We're always looking for talented professionals to join our growing team. Whether you're an experienced contractor, a skilled engineer, or a craftsman carpenter, we offer competitive compensation, growth opportunities, and a supportive work environment.</p>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+      <div class="container">
+
+        <!-- Carpenter Card -->
+        <div id="carpenter" class="category-card">
+          <div class="category-header">
+            <span class="category-icon">🔨</span>
+            <h2>Carpenter</h2>
+          </div>
+          <p class="category-description">Craft quality woodwork and structural components</p>
+          <div class="category-details">
+            <div class="requirements">
+              <h3>Requirements</h3>
+              <ul>
+                <li>Carpentry certification or equivalent experience</li>
+                <li>2+ years of hands-on experience</li>
+                <li>Knowledge of building codes</li>
+                <li>Own basic tools</li>
+                <li>Attention to detail</li>
+              </ul>
+            </div>
+            <div class="benefits">
+              <h3>Benefits</h3>
+              <ul>
+                <li>Hourly competitive wages</li>
+                <li>Overtime opportunities</li>
+                <li>Tool allowance</li>
+                <li>Skills training programs</li>
+                <li>Safety equipment provided</li>
+              </ul>
+            </div>
+          </div>
+          <button class="apply-btn" onclick="applyNow('Carpenter')">Apply as Carpenter</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Application Process -->
+    <section class="process-section">
+      <div class="container">
+        <h2>Application Process</h2>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Submit Application</h3>
+            <p>Fill out the online form with your details and experience</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Initial Review</h3>
+            <p>Our HR team will review your application within 3-5 business days</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Interview</h3>
+            <p>Selected candidates will be invited for an in-person or virtual interview</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Onboarding</h3>
+            <p>Welcome aboard! Complete paperwork and start your journey with us</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <h2>Have Questions?</h2>
+        <p>Contact our recruitment team at <a href="mailto:careers@company.com">careers@company.com</a> or call us at <a href="tel:+1234567890">(123) 456-7890</a></p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Scroll to category if URL has hash
+    window.addEventListener('DOMContentLoaded', function () {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        setTimeout(function () {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            element.classList.add('highlighted');
+          }
+        }, 100);
+      }
+    });
+
+    // Apply button functionality
+    function applyNow(position) {
+      alert('Application for ' + position + ' position initiated!\n\nYou would be redirected to the application form.');
+      // Add your application form logic here
+    }
+  </script>
+</body>
+</html>

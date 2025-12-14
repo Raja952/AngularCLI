@@ -31,7 +31,7 @@
 
     /* Discount Banner - Full Width */
     .discount-banner {
-      background-color: #e67e22;
+      background-color: #a67c52;
       color: white;
       text-align: center;
       padding: 10px 0;
@@ -61,11 +61,11 @@
     .logo {
       font-size: 28px;
       font-weight: 700;
-      color: #2c3e50;
+      color: #a67c52;
     }
 
       .logo span {
-        color: #e67e22;
+        color: #2c3e50;
       }
 
     /* Desktop Navigation */
@@ -79,12 +79,12 @@
         text-decoration: none;
         font-weight: 500;
         transition: color 0.3s;
-        padding: 8px 0;
+        /*padding: 8px 0*/
         position: relative;
       }
 
         .nav-links a:hover {
-          color: #e67e22;
+          color: black;
         }
 
         .nav-links a::after {
@@ -335,13 +335,15 @@
     <nav class="nav-links" [class.active]="isMenuOpen">
       <div class="main-menu">
         <a routerLink="/" (click)="closeMenu()">Home</a>
-        <a routerLink="/storage" (click)="closeMenu()">Storage</a>
-        <a routerLink="/furniture" (click)="closeMenu()">Furniture</a>
-        <a routerLink="/items/sofa" (click)="closeMenu()">Sofas</a>
+        <!--<a routerLink="/storage" (click)="closeMenu()">Storage</a-->
+        <a routerLink="/items/sofa" (click)="closeMenu()">Furniture</a>
+        <a routerLink="/about-us" (click)="closeMenu()">About</a>
+        <a routerLink="/contact-us" (click)="closeMenu()">Contact US</a>
+        <!--<a routerLink="/items/sofa" (click)="closeMenu()">Sofas</a>
         <a routerLink="/office" (click)="closeMenu()">Office</a>
         <a routerLink="/items/beds" (click)="closeMenu()">BedRoom</a>
         <a routerLink="/kitchenware" (click)="closeMenu()">Kitchenware</a>
-        <a routerLink="/lighting" (click)="closeMenu()">Lighting</a>
+        <a routerLink="/lighting" (click)="closeMenu()">Lighting</a>-->
       </div>
 
       <div class="join-us-container" [class.active]="isJoinUsOpen">
@@ -350,12 +352,14 @@
            (click)="toggleJoinUs($event)">
           Join Us
         </a>
+
         <div class="dropdown-content">
-          <a routerLink="/join-us/contractor" (click)="closeAll()">Contractor</a>
-          <a routerLink="/join-us/engineer" (click)="closeAll()">Engineer</a>
-          <a routerLink="/join-us/carpenter" (click)="closeAll()">Carpenter</a>
+          <a routerLink="/JoinUS/contractor" (click)="closeAll()">Contractor</a>
+          <!--<a routerLink="/JoinUS/engineer" (click)="closeAll()">Engineer</a-->
+          <a routerLink="/JoinUS/carpenter" (click)="closeAll()">Carpenter</a>
         </div>
       </div>
+
     </nav>
   </header>
 
@@ -363,5 +367,9 @@
   <main>
     <router-outlet></router-outlet>
   </main>
+
+  <app-footer></app-footer>
+
+
 </body>
 </html>

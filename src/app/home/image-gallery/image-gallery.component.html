@@ -8,10 +8,11 @@
   <!-- Category Filters -->
   <div class="category-filters">
     <button *ngFor="let category of categories"
+            [routerLink]="category.route"
             [class.active]="selectedCategory === category"
             (click)="filterByCategory(category)"
             class="category-btn">
-      {{category}}
+      {{category.name}}
     </button>
   </div>
 
@@ -23,20 +24,17 @@
              [alt]="item.title"
              class="gallery-image">
         <div class="image-overlay">
-          <button class="view-btn">
+          <button class="view-btn" (click)="viewDetails(item)">
             <i class="fas fa-eye"></i> View Details
           </button>
         </div>
       </div>
-
       <div class="item-content">
         <div class="item-header">
           <h3 class="item-title">{{item.title}}</h3>
           <span class="item-category">{{item.category}}</span>
         </div>
-
         <p class="item-description">{{item.description}}</p>
-
         <div class="item-footer">
           <button class="action-btn">
             <i class="fas fa-shopping-cart"></i> Add to Cart

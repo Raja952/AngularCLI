@@ -1,1 +1,77 @@
-<h1>This is Begs Page</h1>
+<!-- beds.component.html - Simple version -->
+<div class="container">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="text-center p-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading beds...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Beds Grid -->
+  <div *ngIf="!loading && !error && beds.length > 0" class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let bed of beds">
+      <div class="product-card shadow-sm border rounded h-100 d-flex flex-column">
+        <div class="image-container" style="cursor: pointer;" (click)="checkOutPage(bed)">
+          <img [alt]="bed.name || 'Bed Image'"
+               [src]="bed.imageUrl || 'assets/default-bed.jpg'"
+               class="img-fluid rounded-top w-100"
+               style="height: 250px; object-fit: cover;" />
+
+          <div *ngIf="bed.discount"
+               class="discount-badge bg-danger text-white p-1 px-2 position-absolute"
+               style="top: 10px; right: 10px; border-radius: 3px;">
+            {{ bed.discount }}
+          </div>
+        </div>
+
+        <div class="product-info p-3 flex-grow-1 d-flex flex-column">
+          <h6 class="text-truncate mb-2" [title]="bed.name || 'Unknown Bed'">
+            {{ bed.name || 'Unknown Bed' }}
+          </h6>
+
+          <p *ngIf="bed.description" class="text-muted small mb-2 flex-grow-1">
+            {{ (bed.description.length > 60) ? (bed.description | slice:0:60) + '...' : bed.description }}
+          </p>
+
+          <div class="price-section mt-auto">
+            <div class="d-flex align-items-center mb-1">
+              <span class="current-price h5 text-success fw-bold me-2">
+                {{ bed.price }}
+              </span>
+              <span *ngIf="bed.oldPrice"
+                    class="original-price text-muted text-decoration-line-through small">
+                {{ bed.oldPrice }}
+              </span>
+            </div>
+
+            <div *ngIf="bed.oldPrice" class="text-success small mb-2">
+              You save: {{ bed.discount || 'Great Offer' }}
+            </div>
+          </div>
+
+          <div *ngIf="bed.emi" class="text-primary small mb-2">
+            {{ bed.emi }}
+          </div>
+
+          <button class="btn btn-primary w-100 mt-auto" (click)="checkOutPage(bed)">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && !error && beds.length === 0" class="text-center p-5">
+    <div class="alert alert-info">
+      <h4>No beds available at the moment</h4>
+      <p>Please check back later.</p>
+    </div>
+  </div>
+</div>

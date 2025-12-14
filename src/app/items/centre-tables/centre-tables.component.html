@@ -1,1 +1,112 @@
-<p>centre-tables works!</p>
+<!-- centre-tables.component.html -->
+<div class="container">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="text-center p-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading centre tables...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Centre Tables Grid -->
+  <div *ngIf="!loading && !error && centreTables.length > 0" class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let table of centreTables">
+      <div class="product-card shadow-sm border rounded h-100 d-flex flex-column">
+        <!-- Image with click event -->
+        <div class="image-container" style="cursor: pointer;" (click)="checkOutPage(table)">
+          <img [alt]="table.title || 'Centre Table Image'"
+               [src]="table.src || 'assets/default-centre-table.jpg'"
+               class="img-fluid rounded-top w-100"
+               style="height: 250px; object-fit: cover;" />
+
+          <!-- Discount Badge -->
+          <div *ngIf="table.discount"
+               class="discount-badge bg-danger text-white p-1 px-2 position-absolute"
+               style="top: 10px; right: 10px; border-radius: 3px;">
+            {{ table.discount }}
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="product-info p-3 flex-grow-1 d-flex flex-column">
+          <!-- Title -->
+          <h6 class="text-truncate mb-2" [title]="table.title || 'Unknown Centre Table'">
+            {{ table.title || 'Unknown Centre Table' }}
+          </h6>
+
+          <!-- Description -->
+          <p *ngIf="table.description" class="text-muted small mb-2 flex-grow-1">
+            {{ (table.description.length > 60) ? (table.description | slice:0:60) + '...' : table.description }}
+          </p>
+
+          <!-- Price -->
+          <div class="price-section mt-auto">
+            <div class="d-flex align-items-center mb-1">
+              <span class="current-price h5 text-success fw-bold me-2">
+                ₹{{ table.Amount | number }}
+              </span>
+            </div>
+
+            <!-- Rating -->
+            <div *ngIf="table.rating" class="mb-2">
+              <div class="d-flex align-items-center">
+                <span class="text-warning">
+                  <i class="fas fa-star" *ngFor="let i of [1,2,3,4,5]"
+                     [class.fas]="i <= table.rating"
+                     [class.far]="i > table.rating"></i>
+                </span>
+                <span class="ms-1 small text-muted">{{ table.rating }}</span>
+              </div>
+            </div>
+
+            <!-- Brand -->
+            <div *ngIf="table.brand" class="text-muted small mb-2">
+              {{ table.brand }}
+            </div>
+
+            <!-- EMI Info -->
+            <div *ngIf="table.emi" class="text-primary small mb-2">
+              <i class="fas fa-credit-card"></i> {{ table.emi }}
+            </div>
+
+            <!-- Shipping Info -->
+            <div *ngIf="table.shipping" class="shipping-info small text-info mb-2">
+              <i class="fas fa-shipping-fast"></i> {{ table.shipping }}
+            </div>
+
+            <!-- Stock Information -->
+            <div *ngIf="table.quantity !== undefined" class="stock-info small mb-3">
+              <div class="d-flex justify-content-between">
+                <span class="text-muted">Available:</span>
+                <span [class.text-success]="table.quantity > 0"
+                      [class.text-danger]="table.quantity === 0">
+                  {{ table.quantity }} {{ table.quantity === 1 ? 'piece' : 'pieces' }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <button class="btn btn-primary w-100 mt-auto"
+                  (click)="checkOutPage(table)"
+                  [disabled]="table.quantity === 0">
+            {{ table.quantity === 0 ? 'Out of Stock' : 'Buy Now' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && !error && centreTables.length === 0" class="text-center p-5">
+    <div class="alert alert-info">
+      <h4>No centre tables available at the moment</h4>
+      <p>Please check back later.</p>
+    </div>
+  </div>
+</div>

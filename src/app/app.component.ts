@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   isJoinUsOpen = false;
   isMobileView = false;
 
+
   ngOnInit() {
     this.checkViewport();
   }
@@ -33,6 +34,15 @@ export class AppComponent implements OnInit {
     }
   }
 
+
+
+
+  @HostListener('document:click')
+  closeDropdown() {
+    this.isJoinUsOpen = false;
+  }
+
+
   checkViewport() {
     this.isMobileView = window.innerWidth <= 900;
     if (!this.isMobileView) {
@@ -50,6 +60,7 @@ export class AppComponent implements OnInit {
   toggleJoinUs(event: Event) {
     if (this.isMobileView) {
       event.preventDefault();
+      event.stopPropagation();
       this.isJoinUsOpen = !this.isJoinUsOpen;
     }
   }

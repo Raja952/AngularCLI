@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Study Tables',
       imageUrl: 'https://ii1.pepperfry.com/media/wysiwyg/banners/Frame_360_14062024_4.jpg',
-      route: '/items/study',
+      route: '/items/study-tables',
       altText: 'Study Table'
     },
     {
@@ -95,125 +95,6 @@ export class HomeComponent implements OnInit {
       altText: 'Cabinets & Sideboards'
     }
   ];
-
-
-
-
-
-    this.products = [
-      {
-        id: 1,
-        name: "Modern Sofa Set",
-        category: "Living Room",
-        price: 599.99,
-        oldPrice: 699.99,
-        description: "Comfortable and stylish sofa perfect for your living room with premium fabric and cushioning.",
-        imageUrl: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&auto=format&fit=crop",
-        badge: "15% OFF"
-      },
-      {
-        id: 2,
-        name: "Queen Size Bed",
-        category: "Bedroom",
-        price: 899.99,
-        oldPrice: 999.99,
-        description: "Elegant bed frame with built-in storage options and premium wooden finish for a luxurious look.",
-        imageUrl: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=500&auto=format&fit=crop",
-        badge: "New Arrival"
-      },
-      {
-        id: 3,
-        name: "Dining Table Set",
-        category: "Dining Room",
-        price: 749.99,
-        oldPrice: 829.99,
-        description: "Perfect for family dinners and gatherings. Includes 6 chairs and extendable table for flexibility.",
-        imageUrl: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=500&auto=format&fit=crop",
-        badge: "10% OFF"
-      },
-      {
-        id: 4,
-        name: "Ergonomic Study Table",
-        category: "Office & Study",
-        price: 299.99,
-        description: "Modern study table with cable management and adjustable height for comfortable working.",
-        imageUrl: "https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?w=500&auto=format&fit=crop",
-        badge: "Best Seller"
-      },
-      {
-        id: 5,
-        name: "Glass Centre Table",
-        category: "Living Room",
-        price: 199.99,
-        description: "Elegant glass top centre table with wooden base, perfect for modern living rooms.",
-        imageUrl: "https://images.unsplash.com/photo-1567016526105-22da6c3fadf1?w=500&auto=format&fit=crop",
-        badge: "15% OFF"
-      },
-      {
-        id: 6,
-        name: "Leather Recliner Chair",
-        category: "Living Room",
-        price: 449.99,
-        description: "Premium leather recliner with massage function and adjustable positions for ultimate comfort.",
-        imageUrl: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&auto=format&fit=crop",
-        badge: "Premium"
-      },
-      {
-        id: 7,
-        name: "L-Shaped Sectional Sofa",
-        category: "Living Room",
-        price: 1299.99,
-        oldPrice: 1599.99,
-        description: "Spacious L-shaped sectional sofa with chaise lounge, perfect for family gatherings.",
-        imageUrl: "https://images.unsplash.com/photo-1567016520491-6b8e5bb5f7c2?w=500&auto=format&fit=crop",
-        badge: "20% OFF"
-      },
-      {
-        id: 8,
-        name: "Sliding Door Wardrobe",
-        category: "Bedroom",
-        price: 799.99,
-        description: "Modern sliding door wardrobe with mirror finish and ample storage space.",
-        imageUrl: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=500&auto=format&fit=crop",
-        badge: "Best Seller"
-      },
-      {
-        id: 9,
-        name: "Italian Luxury Sofa",
-        category: "Premium",
-        price: 2499.99,
-        description: "Handcrafted Italian leather sofa with premium wood frame and gold accents.",
-        imageUrl: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500&auto=format&fit=crop",
-        badge: "Luxury"
-      },
-      {
-        id: 10,
-        name: "Executive Office Desk",
-        category: "Office",
-        price: 599.99,
-        description: "Professional office desk with built-in drawers, cable management, and durable finish.",
-        imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=500&auto=format&fit=crop",
-        badge: "Office"
-      },
-      {
-        id: 11,
-        name: "Multi-Layer Shoe Rack",
-        category: "Storage",
-        price: 89.99,
-        description: "Space-saving shoe rack with 5 tiers, can hold up to 30 pairs of shoes.",
-        imageUrl: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=500&auto=format&fit=crop",
-        badge: "Storage"
-      },
-      {
-        id: 12,
-        name: "TV Cabinet & Sideboard",
-        category: "Living Room",
-        price: 449.99,
-        description: "Modern TV cabinet with sideboard, perfect for organizing media equipment and storage.",
-        imageUrl: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500&auto=format&fit=crop",
-        badge: "Storage"
-      }
-    ];
   }
 
   // Method to format price

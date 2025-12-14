@@ -14,6 +14,11 @@ import { OfficeFurnitureComponent } from './items/office-furniture/office-furnit
 import { ShoeRacksComponent } from './items/shoe-racks/shoe-racks.component';
 import { CabinetsSideboardsComponent } from './items/cabinets-sideboards/cabinets-sideboards.component';
 import { HomeComponent } from './home/home.component';
+import { ContactUSComponent } from '../app/contact-us/contact-us.component';
+import { AboutUSComponent } from '../app/about-us/about-us.component';
+import { CarpenterComponent } from './JoinUS/carpenter/carpenter.component';
+import { EngineerComponent } from './JoinUS/engineer/engineer.component';
+import { ContractorComponent } from './JoinUS/contractor/contractor.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // Home page
@@ -31,6 +36,12 @@ const routes: Routes = [
   { path: 'items/office-furniture', component: OfficeFurnitureComponent },
   { path: 'items/shoe-racks', component: ShoeRacksComponent },
   { path: 'items/cabinets-sideboards', component: CabinetsSideboardsComponent },
+  { path: 'contact-us', component: ContactUSComponent },
+  { path: 'about-us', component: AboutUSComponent },
+  { path: 'JoinUS/carpenter', component: CarpenterComponent },
+  { path: 'JoinUS/Engineer', component: EngineerComponent },
+  { path: 'JoinUS/contractor', component: ContractorComponent },
+
   { path: '**', redirectTo: '' } // Wildcard route
 ];
 
